@@ -27,7 +27,6 @@ hangman_game/
 ### Prérequis
 - Python 3.x
 - Base de données MySQL
-- `pip` (gestionnaire de packages Python)
 
 ### Installation
 
@@ -37,23 +36,17 @@ hangman_game/
    cd hangman_game
    ```
 
-2. Installer les dépendances :
-   Installez les bibliothèques Python requises avec `pip` :
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Configurer MySQL :
+2. Configurer MySQL :
    - Créez une base de données MySQL pour le jeu.
    - Mettez à jour `db_connection.py` avec vos identifiants de base de données.
 
-4. Lancer l'API Flask :
+3. Lancer l'API Flask :
    Pour démarrer le serveur Flask, exécutez :
    ```bash
    python database/api_server.py
    ```
 
-5. Exécuter le jeu du Pendu :
+4. Exécuter le jeu du Pendu :
    Pour exécuter directement la logique du jeu (version CLI) :
    ```bash
    python game/Hangman.py
