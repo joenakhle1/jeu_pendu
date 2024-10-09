@@ -40,18 +40,18 @@ def obtenir_mot_random():
         return None, None
 
 # Fonction pour ajouter un nouveau mot à la base de données avec son type depuis l'API
-def ajoute_un_mot():
-    username = input("Entrer le nom d'utilisateur admin: ")
-    password = input("Entrer le mot de passe administrateur: ")
-    new_word = input("Entrez le nouveau mot à ajouter: ")
-    type_de_mot = input("Saisissez le type de mot (par exemple, fruit, voiture, école), etc.): ")
+def add_new_word():
+    username = input("Enter admin username: ")
+    password = input("Enter admin password: ")
+    new_word = input("Enter the new word to add: ")
+    word_type = input("Enter the word type (e.g., fruit, car, school, etc.): ")
 
     try:
         response = requests.post('http://localhost:5000/add_word', json={
             'username': username,
             'password': password,
             'word': new_word,
-            'type': type_de_mot
+            'type': word_type
         })
         response.raise_for_status()
         data = response.json()
@@ -62,7 +62,7 @@ def ajoute_un_mot():
             print(data['message'])
 
     except requests.exceptions.RequestException as e:
-        print(f"Erreur lors de l'ajout d'un mot à l'API: {e}")
+        print(f"Error adding word to the API: {e}")
 
 # Main Hangman game logic
 def hangman():
@@ -70,10 +70,10 @@ def hangman():
     mode = ModeFacile()  # Choisissez le mode de jeu ici ; peut être changé en ModeNormal() ou ModeDificile()
 
     while True:
-        command = input("Appuyez sur " + "  pour ajouter un nouveau mot, ou sur n'importe quelle autre touche pour jouer :")
+        command = input("Appuyez sur + pour ajouter un nouveau mot, ou sur n'importe quelle autre touche pour jouer :")
 
         if command == '+':
-            ajoute_un_mot()  # Appelez la fonction pour ajouter un nouveau mot
+            add_new_word()  # Appelez la fonction pour ajouter un nouveau mot
         else:
             word, type_de_mot = obtenir_mot_random()  # Récupérer à la fois le mot et le type
             if not word:
