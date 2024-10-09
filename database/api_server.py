@@ -15,7 +15,7 @@ def get_random_word():
         conn = create_connection()
         if conn is None:
             return jsonify({'error': 'Failed to connect to the database'}), 500
-        
+
         cursor = conn.cursor()
         # Fetch both word and type from the database
         cursor.execute("SELECT word, type FROM words")
@@ -54,7 +54,7 @@ def add_word():
         conn = create_connection()
         if conn is None:
             return jsonify({'error': 'Failed to connect to the database'}), 500
-        
+
         cursor = conn.cursor()
 
         # Check admin credentials

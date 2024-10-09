@@ -13,7 +13,7 @@ class EasyMode(GameMode):
 
     def display_hint(self, word_type):
         return f"Hint (easy mode): It's a {word_type}. You have {self.lives} lives!"
-    
+
 class NormalMode(GameMode):
     def __init__(self):
         super().__init__(lives=6)  # Plus de vies
@@ -41,10 +41,10 @@ def get_random_word():
 
 # Function to add a new word to the database
 def add_new_word():
-    username = input("Enter admin username: ")
-    password = input("Enter admin password: ")
-    new_word = input("Enter the new word to add: ")
-    word_type = input("Enter the word type (e.g., fruit, car, school, etc.): ")
+    username = input("Entrer le nom d'utilisateur admin: ")
+    password = input("Entrer le mot de passe administrateur: ")
+    new_word = input("Entrez le nouveau mot à ajouter: ")
+    word_type = input("Saisissez le type de mot (par exemple, fruit, voiture, école), etc.): ")
 
     try:
         response = requests.post('http://localhost:5000/add_word', json={
@@ -66,11 +66,11 @@ def add_new_word():
 
 # Main Hangman game logic
 def hangman():
-    print("Welcome to Hangman!")
+    print("Bienvenue à Hangman !")
     mode = EasyMode()  # Choose the game mode here; can be changed to HardMode()
 
     while True:
-        command = input("Press '+' to add a new word, or any other key to play: ")
+        command = input("Appuyez sur " + "  pour ajouter un nouveau mot, ou sur n'importe quelle autre touche pour jouer :")
 
         if command == '+':
             add_new_word()  # Call the function to add a new word
@@ -98,19 +98,19 @@ def hangman():
                     used_letters.add(user_letter)
                     if user_letter in word_letters:
                         word_letters.remove(user_letter)
-                        print(f"Good guess! '{user_letter}' is in the word.")
+                        print(f"Bien vu ! '{user_letter}' est dans le mot.")
                     else:
                         lives -= 1
-                        print(f"Oops! '{user_letter}' is not in the word.")
+                        print(f"Oops! '{user_letter}' n'est pas dans le mot.")
                 elif user_letter in used_letters:
-                    print("You have already used that letter. Try again.")
+                    print("Vous avez déjà utilisé cette lettre. Réessayez.")
                 else:
-                    print("Invalid input. Please enter a letter from A-Z.")
+                    print("Entrée invalide. Veuillez saisir une lettre de A à Z.")
 
             if lives == 0:
-                print(f'Sorry, you ran out of lives. The word was "{word}".')
+                print(f'Désolé, vous navez plus de vies. Le mot était "{word}".')
             else:
-                print(f'Congratulations! You guessed the word "{word}"!')
+                print(f'Félicitations ! Vous avez deviné le mot  "{word}"!')
 
 # Entry point for the script
 if __name__ == '__main__':
