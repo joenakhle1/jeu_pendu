@@ -40,6 +40,17 @@ hangman_game/
    - Créez une base de données MySQL pour le jeu.
    - Mettez à jour `db_connection.py` avec vos identifiants de base de données.
 
+3. Telecharger Flask, mysql connector, flask-CORS, et requests:
+   ```bash
+   pip install flask mysql-connector-python
+   ```
+   ```bash
+   pip install flask-cors
+   ```
+   ```bash
+   pip install requests
+   ```
+
 3. Lancer l'API Flask :
    Pour démarrer le serveur Flask, exécutez :
    ```bash
