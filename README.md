@@ -21,7 +21,7 @@ hangman_game/
 │   └── db_connection.py       
 ├── game/
 │   └── Hangman.py
-│      └── README.md
+└── README.md     
          
 
 ## Installation
