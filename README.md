@@ -20,7 +20,9 @@ hangman_game/
 │   ├── api_server.py          
 │   └── db_connection.py       
 ├── game/
-│   └── Hangman.py           
+│   └── Hangman.py
+└── README.md     
+         
 
 ## Installation
 
