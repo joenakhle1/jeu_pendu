@@ -5,7 +5,7 @@ class ModeDeJeu:
         self.vies = vies
 
     def display_Indice(self, type_de_mot):
-        return f"Indice: It's a {type_de_mot}."
+        return f"Indice: Le type est {type_de_mot}."
 
 class ModeFacile(ModeDeJeu):
     def __init__(self):
@@ -67,7 +67,6 @@ def add_new_word():
 # Main Hangman game logic
 def hangman():
     print("Bienvenue à Hangman !")
-    mode = ModeFacile()  # Choisissez le mode de jeu ici ; peut être changé en ModeNormal() ou ModeDificile()
 
     while True:
         command = input("Appuyez sur + pour ajouter un nouveau mot, ou sur n'importe quelle autre touche pour jouer :")
@@ -75,6 +74,19 @@ def hangman():
         if command == '+':
             add_new_word()  # Appelez la fonction pour ajouter un nouveau mot
         else:
+        # Demander au joueur de Choisire le mode de jeu ici ; peut être changé en ModeNormal() ou ModeDificile()
+            choix_mode = input("Choisissez un mode de jeu: (1) Facile, (2) Normal, (3) Difficile: ")
+
+            if choix_mode == '1':
+                mode = ModeFacile()
+            elif choix_mode == '2':
+                mode = ModeNormal()
+            elif choix_mode == '3':
+                mode = ModeDificile()
+            else:
+                print("Choix invalide. Le mode difficile sera utilisé par défaut.")
+                mode = ModeDificile()
+                
             word, type_de_mot = obtenir_mot_random()  # Récupérer à la fois le mot et le type
             if not word:
                 return
@@ -84,7 +96,7 @@ def hangman():
             used_letters = set()
             vies = mode.vies  # Définir les vies en fonction du mode choisi
 
-            print(f"(Indice: Le type est '{type_de_mot}')")  # Afficher le type comme indice
+            print(mode.display_Indice(type_de_mot))  # Afficher le type comme indice
 
             while len(word_letters) > 0 and vies > 0:
                 print('---------------------------------')
