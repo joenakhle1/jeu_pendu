@@ -46,20 +46,25 @@ hangman_game/
    ```bash
    pip install flask mysql-connector-python
    ```
+
    ```bash
    pip install flask-cors
    ```
+
    ```bash
    pip install requests
    ```
 
-3. Lancer l'API Flask :
+4. Importer la basse de données MySQL qui se trouve dans le dossier "database/backup" dans votre DBMS
+pour avoir toutes les données
+
+5. Lancer l'API Flask :
    Pour démarrer le serveur Flask, exécutez :
    ```bash
    python database/api_server.py
    ```
 
-4. Exécuter le jeu du Pendu :
+6. Exécuter le jeu du Pendu :
    Pour exécuter directement la logique du jeu (version CLI) :
    ```bash
    python game/Hangman.py
